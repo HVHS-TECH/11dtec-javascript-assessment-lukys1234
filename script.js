@@ -11,7 +11,7 @@ function getFormInput() {
     const ORDER_FIELD = document.getElementById("orderField");
     let order = Number(ORDER_FIELD.value);
   
-    OUTPUT.innerHTML = "<p> Your name is: "+userName+" </p1>";
+    OUTPUT.innerHTML = "<p> Your name is: "+userName+" </p1>"
 
   OUTPUT.innerHTML += "You ordered: "+ userOrder[order-1];
   }

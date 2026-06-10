@@ -3,8 +3,15 @@ const OUTPUT = document.getElementById("spaceForJavaScriptOutput");
 
 
 let userOrder = ["L&P", "Mince and Cheese Pie", "Fish and Chips", "Pavlova"];
-function getFormInput() {
+let cost = [5 , 7, 12, 15 ];
 
+function calculateChange(_money, _price) {
+  let change = _money - _price;
+  return change;
+}
+
+
+function getFormInput() {
 
   const MONEY_FIELD = document.getElementById("moneyField");
   const ORDER_FIELD = document.getElementById("orderField");
@@ -13,14 +20,16 @@ function getFormInput() {
   let userName = NAME_FIELD.value;
   let order = Number(ORDER_FIELD.value);
   let userMoney = Number(MONEY_FIELD.value);
+  let cost = Number(ORDER_FIELD.value);
   OUTPUT.innerHTML = "<p> Your name is: " + userName + " </p1>";
   OUTPUT.innerHTML += "<p> You have: $" + userMoney + " </p1>";
   OUTPUT.innerHTML += "You ordered: " + userOrder[order - 1];
+
+  if (userMoney >= cost [cost-1]) {
+    OUTPUT.innerHTML = "<p> You bought" +userOrder[order - 1];"</p1>"
+    OUTPUT.innerHTML += "<p> You have $"+calculateChange(userMoney, cost [cost-1])+ " change</p1>"
+  } else {
+    OUTPUT.innerHTML = "<p> You dont have enough money</p1>";
+  }
+
 }
-
-
-function calculateChange(_money, _price) {
-  let change = _money - _price;
-  return change;
-}
-

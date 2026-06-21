@@ -33,7 +33,11 @@ let cost =landpAmount *price[0] + mincecheeseAmount * price [1] + fishchipsAmoun
  
   OUTPUT.innerHTML = "<p> Your name is: " + userName + "";
   OUTPUT.innerHTML += "<p> You have: $" + userMoney;
-  OUTPUT.innerHTML += "You ordered: " +  " </p1>";
+  OUTPUT.innerHTML += "You ordered: " + landpAmount + "L&P ";
+  OUTPUT.innerHTML += "You ordered: " + mincecheeseAmount + " Mince and cheese Pies" ;
+  OUTPUT.innerHTML += "You ordered: " + fishchipsAmount +  " Fish and chips";
+  OUTPUT.innerHTML += "You ordered: " + pavlovaAmount +  " </p1>";
+
 
   if (userMoney >= cost ) {
     OUTPUT.innerHTML += "<p> You have $"+calculateChange(userMoney, cost )+ " change"

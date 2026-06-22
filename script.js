@@ -1,10 +1,16 @@
 console.log("Hello world!")
 const OUTPUT = document.getElementById("spaceForJavaScriptOutput");
+const MENU = document.getElementById("spaceForMenu");
 
 
 let userOrder = ["L&P", "Mince and Cheese Pie", "Fish and Chips", "Pavlova"];
-let price = [5 , 7, 12, 15 ];
+let price = [5, 7, 12, 15];
 
+
+for (let i = 0; i < userOrder.length; i++) {
+  console.log("menu" + i + ": " + userOrder[i] + price[i] + "<br>")
+  MENU.innerHTML+=userOrder[i] +" $" + price[i] + "<br>"
+}
 function calculateChange(_money, _price) {
   let change = _money - _price;
   return change;
@@ -13,7 +19,6 @@ function calculateChange(_money, _price) {
 
 function getFormInput() {
   const NAME_FIELD = document.getElementById("nameField");
-  const ORDER_FIELD = document.getElementById("orderField");
   const MONEY_FIELD = document.getElementById("moneyField");
 
   const LANDP_FIELD = document.getElementById("landpField");
@@ -22,27 +27,40 @@ function getFormInput() {
   const PAVLOVA_FIELD = document.getElementById("pavlovaField");
 
   let userName = NAME_FIELD.value;
-  let landpAmount  = Number(LANDP_FIELD.value);
+  let landpAmount = Number(LANDP_FIELD.value);
   let mincecheeseAmount = Number(MINCEANDCHEESE_FIELD.value);
   let fishchipsAmount = Number(FISHCHIPS_FIELD.value);
   let pavlovaAmount = Number(PAVLOVA_FIELD.value);
 
-let cost =landpAmount *price[0] + mincecheeseAmount * price [1] + fishchipsAmount * price[2] + pavlovaAmount * price[3]
+
+  let cost = landpAmount * price[0] + mincecheeseAmount * price[1] + fishchipsAmount * price[2] + pavlovaAmount * price[3]
+
+  if (landpAmount > 0) {
+    OUTPUT.innerHTML += "L&Ps: " + landpAmount + "= $"+ landpAmount * price[0] + "<br>";
+
+  }
+  if (mincecheeseAmount > 0) {
+    OUTPUT.innerHTML += "Mince and cheese Pies: " + mincecheeseAmount + "= $"+ mincecheeseAmount * price[1] + "<br>";
+
+  }if (fishchipsAmount > 0) {
+    OUTPUT.innerHTML += "Fish and chips: " + fishchipsAmount + "= $"+ fishchipsAmount * price[2] + "<br>";
+
+  }if (pavlovaAmount > 0) {
+    OUTPUT.innerHTML += "pavlova: " + pavlovaAmount + "= $"+ pavlovaAmount * price[3] + "<br>";
+
+  }
 
   let userMoney = Number(MONEY_FIELD.value);
- 
-  OUTPUT.innerHTML = "<p> Your name is: " + userName + "";
+
+
+
+  OUTPUT.innerHTML = "<p> Your name is: " + userName + "<br>";
   OUTPUT.innerHTML += "<p> You have: $" + userMoney;
-  OUTPUT.innerHTML += "You ordered: " + landpAmount + "L&P ";
-  OUTPUT.innerHTML += "You ordered: " + mincecheeseAmount + " Mince and cheese Pies" ;
-  OUTPUT.innerHTML += "You ordered: " + fishchipsAmount +  " Fish and chips";
-  OUTPUT.innerHTML += "You ordered: " + pavlovaAmount +  " </p1>";
 
-
-  if (userMoney >= cost ) {
-    OUTPUT.innerHTML += "<p> You have $"+calculateChange(userMoney, cost )+ " change"
+  if (userMoney >= cost) {
+    OUTPUT.innerHTML += "<p> You have $" + calculateChange(userMoney, cost) + " change"
   } else {
-    OUTPUT.innerHTML += "<p> You can't afford this item, sorry."+  + "</p1>";
+    OUTPUT.innerHTML += "<p> You can't afford this item, sorry." + + "</p1>";
   }
 
 }

@@ -3,8 +3,8 @@ const OUTPUT = document.getElementById("spaceForJavaScriptOutput");
 
 
 
-let userOrder = ["L&P", "Mince&CheesePie", "FishnChips", "Pavlova", "dEZZnUTS"];
-let price = [5, 7, 12, 15, 45];
+let userOrder = ["L&P", "Mince&CheesePie", "FishnChips", "Pavlova", ];
+let price = [5, 7, 12, 15,];
 let quantities = [];
 
 

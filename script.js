@@ -5,7 +5,7 @@ const OUTPUT = document.getElementById("spaceForJavaScriptOutput");
 
 let userOrder = ["L&P", "Mince&CheesePie", "FishnChips", "Pavlova", ];
 let price = [5, 7, 12, 15,];
-let quantities = [];
+let quantities = [];   
 
 
 
@@ -19,9 +19,25 @@ function calculateChange(_money, _price) {
   return change;
 }
 function viewShoppingCart(){
+  const MONEY_FIELD = document.getElementById("moneyField");
+  let userMoney = Number(MONEY_FIELD.value);
+  let cost = 0;
 
+  for (let i = 0; i < userOrder.length; i++) {
+    const menuField = document.getElementById(userOrder[i] + "Field")
+    quantities[i] = Number(menuField.value);
+    let total = quantities[i] * price[i]
+    cost += total
+  }
 
+  if (userMoney >= cost) {
+    for (let i = 0; i < userOrder.length; i++) {
+      let total = quantities[i] * price[i]
+      OUTPUT.innerHTML += userOrder[i] + " total: $" + total + "<br>";
+    }
 
+    OUTPUT.innerHTML += "Total cost: $" + cost + "<br>";
+  }
 }
 function getFormInput() {
   const NAME_FIELD = document.getElementById("nameField");
@@ -43,7 +59,7 @@ function getFormInput() {
   OUTPUT.innerHTML = "<p> Your name is: " + userName + "<br>";
   OUTPUT.innerHTML += "<p> You have: $" + userMoney;
 
-  if (userMoney > cost) {
+  if (userMoney >= cost) {
     for (let i = 0; i < userOrder.length; i++) {
       let total = quantities[i] * price[i]
       OUTPUT.innerHTML += userOrder[i] + " total: $" + total + "<br>";
@@ -53,7 +69,6 @@ function getFormInput() {
     OUTPUT.innerHTML += "Thanks for shopping at my Cafe , have a good day."
 
   } else {
-    OUTPUT.innerHTML = "<p> You can't afford this item, sorry.</p1>";
     OUTPUT.innerHTML += " Your items were $" + cost + " ,You have $ " + userMoney + " you cant afford these items, sorry."
 
   }
